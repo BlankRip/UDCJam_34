@@ -9,6 +9,7 @@ namespace UDCJ
     {
         private Rigidbody2D rigidbody;
         private InputAction moveAction;
+        private GameplayColour currentColour;
 
         [SerializeField]
         private float moveSpeed = 2000.0f;
@@ -26,8 +27,9 @@ namespace UDCJ
 
         private void Start()
         {
-            GameStatics.SetSpriteColor(playerVisualSpriteRenderer, GameplayColour.Nutral);
-            SetGameobjectLayer(GameStatics.NutralColourLayer);
+            currentColour = GameplayColour.Nutral;
+            GameStatics.SetSpriteColor(playerVisualSpriteRenderer, currentColour);
+            GameStatics.SetGameObjectToColourLayer(this.gameObject, currentColour);
             
             PlayerInput playerInput = PlayerInputProvider.GetPlayerInputComp();
             moveAction = playerInput.actions["Move"];
@@ -36,7 +38,18 @@ namespace UDCJ
         private void Update()
         {
             Vector2 moveDirection = moveAction.ReadValue<Vector2>().normalized;
-            rigidbody.linearVelocity = moveDirection * moveSpeed * Time.deltaTime;
+            rigidbody.linearVelocity = moveDirection * (moveSpeed * Time.deltaTime);
+            
+            if (Keyboard.current.kKey.wasPressedThisFrame)
+            {
+                int currentColourInt = (int)currentColour;
+                currentColourInt++;
+                if (currentColourInt > 3)
+                    currentColourInt = 0;
+                currentColour = (GameplayColour)currentColourInt;
+                GameStatics.SetSpriteColor(playerVisualSpriteRenderer, currentColour);
+                GameStatics.SetGameObjectToColourLayer(this.gameObject, currentColour);
+            }
         }
 
         private void SetGameobjectLayer(int layer)

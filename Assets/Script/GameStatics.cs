@@ -14,10 +14,39 @@ namespace UDCJ
         public static int Colour2Layer = 7;
         public static int Colour3Layer = 8;
         
-        public static Color NutralColour = Color.white;
+        public static Color NutralColour = Color.gray;
         public static Color Colour1 = Color.blue;
         public static Color Colour2 = Color.yellow;
         public static Color Colour3 = Color.green;
+        public static Color WallColour = Color.black;
+
+        public static void SetGameObjectToColourLayer(GameObject gameObject, GameplayColour gameplayColour)
+        {
+            int layerToSetTo = GetColourLayer(gameplayColour);
+            gameObject.layer = layerToSetTo;
+            foreach (Transform child in gameObject.transform)
+            {
+                child.gameObject.layer = layerToSetTo;
+            }
+        }
+        
+        private static int GetColourLayer(GameplayColour gameplayColour)
+        {
+            int colour = (int)gameplayColour;
+            switch (colour)
+            {
+                case 0:
+                    return NutralColourLayer;
+                case 1:
+                    return Colour1Layer;
+                case 2:
+                    return Colour2Layer;
+                case 3:
+                    return Colour3Layer;
+                default:
+                    return NutralColourLayer;
+            }
+        }
         
         public static void SetSpriteColor(SpriteRenderer spriteRenderer, GameplayColour gameplayColour)
         {
@@ -40,6 +69,9 @@ namespace UDCJ
                     break;
                 case 3:
                     spriteRenderer.color = Colour3;
+                    break;
+                case 4:
+                    spriteRenderer.color = WallColour;
                     break;
                 default:
                     spriteRenderer.color = NutralColour;

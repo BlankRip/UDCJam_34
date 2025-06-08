@@ -1,10 +1,12 @@
-using UDCJ;
 using UnityEngine;
 
-public class UI_Level : UI_Base
+namespace UDCJ
 {
-    private void Awake()
+    public class UI_Level : UI_Base
     {
-        base.CurrentUIType = UIType.LevelUI;
+        private void Awake()
+        {
+            base.CurrentUIType = UIType.LevelUI;
+        }
     }
 }

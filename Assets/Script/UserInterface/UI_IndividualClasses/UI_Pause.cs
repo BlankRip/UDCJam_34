@@ -1,11 +1,13 @@
 using System;
-using UDCJ;
 using UnityEngine;
 
-public class UI_Pause : UI_Base
+namespace UDCJ
 {
-    private void Awake()
+    public class UI_Pause : UI_Base
     {
-        base.CurrentUIType = UIType.PauseUI;
+        private void Awake()
+        {
+            base.CurrentUIType = UIType.PauseUI;
+        }
     }
 }

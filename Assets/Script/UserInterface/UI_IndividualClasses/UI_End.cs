@@ -1,10 +1,12 @@
-using UDCJ;
 using UnityEngine;
 
-public class UI_End : UI_Base
+namespace UDCJ
 {
-    private void Awake()
+    public class UI_End : UI_Base
     {
-        base.CurrentUIType = UIType.EndUI;
+        private void Awake()
+        {
+            base.CurrentUIType = UIType.EndUI;
+        }
     }
 }

@@ -1,7 +1,10 @@
 using UDCJ;
 using UnityEngine;
 
-public class UI_Base : MonoBehaviour
+namespace UDCJ
 {
-    [field: SerializeField] public UIType CurrentUIType { get; protected set; }
+    public class UI_Base : MonoBehaviour
+    {
+        [field: SerializeField] public UIType CurrentUIType { get; protected set; }
+    }
 }

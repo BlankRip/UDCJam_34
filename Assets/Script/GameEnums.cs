@@ -9,4 +9,13 @@ namespace UDCJ
       Yellow = 2,  //Colour 2 change when decided
       Green = 3,   //Colour 3 change when decided
    }
+
+   public enum UIType
+   {
+      None,
+      MainMenuUI,
+      LevelUI,
+      PauseUI,
+      EndUI
+   }
 }

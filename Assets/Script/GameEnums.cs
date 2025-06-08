@@ -4,9 +4,9 @@ namespace UDCJ
 {
    public enum GameplayColour
    {
-      Nutral,
-      Mlue,    //Colour 1 change when decided
-      Yellow,  //Colour 2 change when decided
-      Green,   //Colour 3 change when decided
+      Nutral = 0,
+      Blue = 1,    //Colour 1 change when decided
+      Yellow = 2,  //Colour 2 change when decided
+      Green = 3,   //Colour 3 change when decided
    }
 }

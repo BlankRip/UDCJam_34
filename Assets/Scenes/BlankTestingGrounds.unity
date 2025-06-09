@@ -740,7 +740,7 @@ MonoBehaviour:
   playerVisualsSpriteRenderer:
   - {fileID: 2110439628}
   - {fileID: 2014947420}
-  directionIndicator: {fileID: 0}
+  directionIndicator: {fileID: 1151725199}
 --- !u!58 &1470064784
 CircleCollider2D:
   m_ObjectHideFlags: 0

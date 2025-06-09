@@ -1,11 +1,12 @@
 using System;
+using MyNamespace;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.U2D;
 
 namespace UDCJ
 {
-    public class ColourSplatter : MonoBehaviour
+    public class ColourSplatter : MonoBehaviour, IIgnoreBulletDestroy
     {
 #if UNITY_EDITOR
         [OnValueChanged("SetColourInEditor")]

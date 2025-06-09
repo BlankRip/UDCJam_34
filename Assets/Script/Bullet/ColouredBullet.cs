@@ -1,4 +1,5 @@
 using System;
+using MyNamespace;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -32,7 +33,10 @@ namespace UDCJ
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            Destroy(this.gameObject, 0.03f);
+            if (other.GetComponent<IIgnoreBulletDestroy>() == null)
+            {
+                Destroy(this.gameObject, 0.03f);
+            }
         }
     }
 }

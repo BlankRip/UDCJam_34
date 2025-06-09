@@ -99,7 +99,6 @@ namespace UDCJ
             if (CurrentColour == GameplayColour.Nutral)
                 return;
             
-            Debug.Log("Spit out colour");
             Vector3 spawnPoint = directionIndicator.position + (directionIndicator.up);
             ColouredBullet spawnedBullet = Instantiate(bulletPrefab,  spawnPoint, Quaternion.identity);
             spawnedBullet.SetupBullet(CurrentColour, directionIndicator.up);

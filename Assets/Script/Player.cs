@@ -40,7 +40,9 @@ namespace UDCJ
         
 
         [SerializeField]
-        private float moveSpeed = 2000.0f;
+        private float moveSpeed = 10.0f;
+        [SerializeField]
+        private ColouredBullet bulletPrefab;
         [SerializeField]
         private SpriteRenderer[] playerVisualsSpriteRenderer;
 
@@ -68,7 +70,7 @@ namespace UDCJ
         private void Update()
         {
             Vector2 moveDirection = moveAction.ReadValue<Vector2>().normalized;
-            rigidbody.linearVelocity = moveDirection * (moveSpeed * Time.deltaTime);
+            rigidbody.linearVelocity = moveDirection * moveSpeed;
             if (moveDirection != Vector2.zero)
             {
                 directionIndicator.rotation = Quaternion.LookRotation(directionIndicator.forward, moveDirection);
@@ -80,6 +82,7 @@ namespace UDCJ
                 SpitOutCurrentColour();
             }
             
+#if UNITY_EDITOR
             if (Keyboard.current.kKey.wasPressedThisFrame)
             {
                 int currentColourInt = (int)CurrentColour;
@@ -88,6 +91,7 @@ namespace UDCJ
                     currentColourInt = 0;
                 CurrentColour = (GameplayColour)currentColourInt;
             }
+#endif
         }
 
         private void SpitOutCurrentColour()
@@ -96,6 +100,10 @@ namespace UDCJ
                 return;
             
             Debug.Log("Spit out colour");
+            Vector3 spawnPoint = directionIndicator.position + (directionIndicator.up);
+            ColouredBullet spawnedBullet = Instantiate(bulletPrefab,  spawnPoint, Quaternion.identity);
+            spawnedBullet.SetupBullet(CurrentColour, directionIndicator.up);
+            
             CurrentColour = GameplayColour.Nutral;
         }
 

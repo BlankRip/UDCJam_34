@@ -737,7 +737,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6f21617953aba488a3cc3bb5ebd9b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2000
+  moveSpeed: 5.5
+  bulletPrefab: {fileID: 170230267849788473, guid: 34a3b17478e3d1f41b8ae3cd1dc2bfd9, type: 3}
   playerVisualsSpriteRenderer:
   - {fileID: 2110439628}
   - {fileID: 2014947420}
@@ -904,7 +905,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4168385982096924420, guid: 49052989c5316064f85adb8aa424552f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.936
+      value: -2.2
       objectReference: {fileID: 0}
     - target: {fileID: 4168385982096924420, guid: 49052989c5316064f85adb8aa424552f, type: 3}
       propertyPath: m_LocalPosition.z

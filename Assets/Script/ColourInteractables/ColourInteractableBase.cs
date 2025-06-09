@@ -1,6 +1,7 @@
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.U2D;
 
 namespace UDCJ
 {
@@ -11,10 +12,12 @@ namespace UDCJ
 #endif
         [SerializeField] protected GameplayColour startingColour;
         [SerializeField] protected SpriteRenderer[] visualsSpriteRenderers;
+        [SerializeField] protected SpriteShapeRenderer[] visualsSpriteShapeRenderers;
 
         protected void SetObjectColour(GameplayColour gameplayColour)
         {
             GameStatics.SetSpriteColour(visualsSpriteRenderers, gameplayColour);
+            GameStatics.SetSpriteColour(visualsSpriteShapeRenderers, gameplayColour);
             GameStatics.SetGameObjectToColourLayer(this.gameObject, gameplayColour);
         }
         

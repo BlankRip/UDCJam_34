@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.U2D;
 
 namespace UDCJ
 {
@@ -59,7 +60,46 @@ namespace UDCJ
         public static void SetSpriteColour(SpriteRenderer spriteRenderer, GameplayColour gameplayColour)
         {
             int colour = (int)gameplayColour;
-            if (colour < 0 || colour > 3)
+            if (colour < 0 || colour > 4)
+            {
+                Debug.LogError("Requesting invalid colour from game statics");
+            }
+            
+            switch (colour)
+            {
+                case 0:
+                    spriteRenderer.color = NutralColour;
+                    break;
+                case 1:
+                    spriteRenderer.color = Colour1;
+                    break;
+                case 2:
+                    spriteRenderer.color = Colour2;
+                    break;
+                case 3:
+                    spriteRenderer.color = Colour3;
+                    break;
+                case 4:
+                    spriteRenderer.color = WallColour;
+                    break;
+                default:
+                    spriteRenderer.color = NutralColour;
+                    break;
+            }
+        }
+        
+        public static void SetSpriteColour(SpriteShapeRenderer[] spriteRenderers, GameplayColour gameplayColour)
+        {
+            foreach (SpriteShapeRenderer renderer in spriteRenderers)
+            {
+                SetSpriteColour(renderer, gameplayColour);
+            }
+        }
+        
+        public static void SetSpriteColour(SpriteShapeRenderer spriteRenderer, GameplayColour gameplayColour)
+        {
+            int colour = (int)gameplayColour;
+            if (colour < 0 || colour > 4)
             {
                 Debug.LogError("Requesting invalid colour from game statics");
             }

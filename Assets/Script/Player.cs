@@ -13,13 +13,13 @@ namespace UDCJ
         private Vector2 shootDirection;
         
         private GameplayColour currentColour;
-        private GameplayColour CurrentColour
+        public GameplayColour CurrentColour
         {
             get
             {
                 return currentColour;
             }
-            set
+            private set
             {
                 currentColour = value;
                 GameStatics.SetSpriteColour(playerVisualsSpriteRenderer, currentColour);
@@ -99,13 +99,9 @@ namespace UDCJ
             CurrentColour = GameplayColour.Nutral;
         }
 
-        private void SetGameobjectLayer(int layer)
+        public void SetPlayerColour(GameplayColour newColour)
         {
-            gameObject.layer = layer;
-            foreach (Transform child in transform)
-            {
-                child.gameObject.layer = layer;
-            }
+            CurrentColour = newColour;
         }
     }
 }

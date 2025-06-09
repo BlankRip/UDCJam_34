@@ -14,10 +14,7 @@ namespace UDCJ
 
         protected void SetObjectColour(GameplayColour gameplayColour)
         {
-            foreach (SpriteRenderer spriteRenderer in visualsSpriteRenderers)
-            {
-                GameStatics.SetSpriteColor(spriteRenderer, gameplayColour);
-            }
+            GameStatics.SetSpriteColour(visualsSpriteRenderers, gameplayColour);
             GameStatics.SetGameObjectToColourLayer(this.gameObject, gameplayColour);
         }
         

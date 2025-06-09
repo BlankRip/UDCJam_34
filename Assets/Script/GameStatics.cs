@@ -47,8 +47,16 @@ namespace UDCJ
                     return NutralColourLayer;
             }
         }
+
+        public static void SetSpriteColour(SpriteRenderer[] spriteRenderers, GameplayColour gameplayColour)
+        {
+            foreach (SpriteRenderer renderer in spriteRenderers)
+            {
+                SetSpriteColour(renderer, gameplayColour);
+            }
+        }
         
-        public static void SetSpriteColor(SpriteRenderer spriteRenderer, GameplayColour gameplayColour)
+        public static void SetSpriteColour(SpriteRenderer spriteRenderer, GameplayColour gameplayColour)
         {
             int colour = (int)gameplayColour;
             if (colour < 0 || colour > 3)

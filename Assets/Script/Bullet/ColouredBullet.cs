@@ -10,7 +10,7 @@ namespace UDCJ
         [SerializeField] private float moveSpeed = 1300.0f;
         [SerializeField] private float lifetime = 16.0f;
         [SerializeField] private SpriteRenderer spriteRenderer;
-        private GameplayColour bulletColour;
+        public GameplayColour BulletColour { get; private set; }
         private Rigidbody2D rigidbody;
 
         private void Start()
@@ -29,10 +29,16 @@ namespace UDCJ
             GameStatics.SetSpriteColour(spriteRenderer, colour);
             GameStatics.SetGameObjectToColourLayer(this.gameObject, colour);
             transform.up = upVector;
+            BulletColour = colour;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            IBulletInteractable interactable = other.GetComponent<IBulletInteractable>();
+            if (interactable != null)
+            {
+                interactable.OnInteract(this);
+            }
             if (other.GetComponent<IIgnoreBulletDestroy>() == null)
             {
                 Destroy(this.gameObject, 0.03f);

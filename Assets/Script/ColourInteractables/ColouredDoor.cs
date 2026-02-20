@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UDCJ
 {
-    public class ColouredDoor : ColourInteractableBase
+    public class ColouredDoor : ColourGamebojectBase
     {
         private void Start()
         {
@@ -14,6 +14,11 @@ namespace UDCJ
         {
             //Maybe some SFX here
             SetObjectColour(colour);
+        }
+
+        public void ReturnDoorColorToStartingColour()
+        {
+            SetObjectColour(startingColour);
         }
     }
 }

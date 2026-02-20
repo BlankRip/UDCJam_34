@@ -1,18 +1,20 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace UDCJ
 {
-    public class ColouredPowerCell: ColourInteractableBase
+    public class ColouredPowerCell: ColourGamebojectBase, IBulletInteractable
     {
         [SerializeField] protected GameplayColour colourToMatch;
         protected bool isMatched = false;
 
-        [SerializeField] private UnityEvent OnColourMatched;
+        [SerializeField] private UnityEvent<GameplayColour> OnColourMatched;
         [SerializeField] private UnityEvent OnColourMisMatched;
 
         protected GameplayColour currentColour;
+
         protected GameplayColour CurrentColour
         {
             get
@@ -58,13 +60,22 @@ namespace UDCJ
         protected virtual void ColourMatch()
         {
             isMatched = true;
-            OnColourMatched.Invoke();
+            OnColourMatched.Invoke(colourToMatch);
         }
 
         protected virtual void ColourMisMatch()
         {
             isMatched = false;
             OnColourMisMatched.Invoke();
+        }
+
+        public void OnInteract(ColouredBullet interactingBullet)
+        {
+            if (interactingBullet.BulletColour == colourToMatch)
+            {
+                SetColour(interactingBullet.BulletColour);
+            }
+            Debug.Log("INteracted Failed");
         }
     }
 }

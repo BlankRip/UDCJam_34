@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UDCJ
 {
-    public class ColouredDoor : ColourGamebojectBase
+    public class ColouredDoor : ColourGameObjectBase
     {
         private void Start()
         {

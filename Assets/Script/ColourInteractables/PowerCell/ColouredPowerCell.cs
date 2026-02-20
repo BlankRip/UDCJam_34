@@ -5,13 +5,18 @@ using UnityEngine.Events;
 
 namespace UDCJ
 {
-    public class ColouredPowerCell: ColourGamebojectBase, IBulletInteractable
+    public class ColouredPowerCell: ColourGameObjectBase, IBulletInteractable
     {
         [SerializeField] protected GameplayColour colourToMatch;
         protected bool isMatched = false;
 
         [SerializeField] private UnityEvent<GameplayColour> OnColourMatched;
         [SerializeField] private UnityEvent OnColourMisMatched;
+        [SerializeField] [Tooltip("Once the color is matched it is locked in")] 
+        protected bool singleMatch = false;
+
+        [SerializeField] protected GameObject interactionLockedVisual;
+        protected bool interactionLocked = false;
 
         protected GameplayColour currentColour;
 
@@ -36,6 +41,9 @@ namespace UDCJ
 
         public void SetColour(GameplayColour colour)
         {
+            if (interactionLocked)
+                return;
+            
             CurrentColour = colour;
         }
 
@@ -61,6 +69,11 @@ namespace UDCJ
         {
             isMatched = true;
             OnColourMatched.Invoke(colourToMatch);
+            if (singleMatch)
+            {
+                interactionLocked = true;
+                interactionLockedVisual?.SetActive(true);
+            }
         }
 
         protected virtual void ColourMisMatch()
@@ -71,11 +84,7 @@ namespace UDCJ
 
         public void OnInteract(ColouredBullet interactingBullet)
         {
-            if (interactingBullet.BulletColour == colourToMatch)
-            {
-                SetColour(interactingBullet.BulletColour);
-            }
-            Debug.Log("INteracted Failed");
+            SetColour(interactingBullet.BulletColour);
         }
     }
 }

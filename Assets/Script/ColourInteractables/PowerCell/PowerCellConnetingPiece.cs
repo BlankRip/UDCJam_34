@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UDCJ
 {
-    public class PowerCellConnetingPiece : ColourGamebojectBase
+    public class PowerCellConnetingPiece : ColourGameObjectBase
     {
         
     }

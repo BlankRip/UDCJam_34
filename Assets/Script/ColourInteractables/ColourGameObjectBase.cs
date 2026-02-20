@@ -5,7 +5,7 @@ using UnityEngine.U2D;
 
 namespace UDCJ
 {
-    public class ColourGamebojectBase : MonoBehaviour
+    public class ColourGameObjectBase : MonoBehaviour
     {
 #if UNITY_EDITOR
         [OnValueChanged("OnStartingColourValueChanged")]

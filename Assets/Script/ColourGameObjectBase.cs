@@ -25,6 +25,11 @@ namespace UDCJ
             }
         }
         
+        public void ReturnToStartingColour()
+        {
+            SetObjectColour(startingColour);
+        }
+        
 #if UNITY_EDITOR
         private void OnStartingColourValueChanged()
         {

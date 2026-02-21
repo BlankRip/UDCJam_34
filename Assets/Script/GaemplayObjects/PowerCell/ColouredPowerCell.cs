@@ -8,17 +8,23 @@ namespace UDCJ
 {
     public class ColouredPowerCell: ColourGameObjectBase, IBulletInteractable
     {
+        [Space] [Space] [Header("Power Cell Settings")]
         [SerializeField] protected GameplayColour colourToMatch;
-        public bool IsMatched { get; private set; }
-
         public UnityEvent<GameplayColour> OnColourMatched;
         public UnityEvent OnColourMisMatched;
-        [SerializeField] [Tooltip("Once the color is matched it is locked in")] 
+        public bool IsMatched { get; private set; }
+        
+        [Space] [Space] [Header("Power Cell behavior options")]
+        [SerializeField] [Tooltip("Player can't manually deactivate this using diffrent colour bullet once it is matched")] 
         protected bool singleMatch = false;
-
         [SerializeField] protected GameObject interactionLockedVisual;
-        protected bool interactionLocked = false;
 
+        [SerializeField] [Tooltip("If the power cell should get deactivated automatically after activation")]
+        private bool autoDeactivate = false;
+        [SerializeField] private float autoDeactivateTime = 2.0f;
+        
+        protected bool interactionLocked = false;
+        protected float timer;
         protected GameplayColour currentColour;
 
         protected GameplayColour CurrentColour
@@ -38,6 +44,25 @@ namespace UDCJ
         private void Start()
         {
             CurrentColour = startingColour;
+            timer = autoDeactivateTime;
+        }
+
+        private void Update()
+        {
+            if (autoDeactivate && IsMatched)
+            {
+                timer -= Time.deltaTime;
+                if (timer <= 0)
+                {
+                    if (singleMatch)
+                    {
+                        interactionLocked = false;
+                        interactionLockedVisual?.SetActive(false);
+                    }
+                    CurrentColour = GameplayColour.Nutral;
+                    ColourMisMatch();
+                }
+            }
         }
 
         public void SetColour(GameplayColour colour)
@@ -81,6 +106,11 @@ namespace UDCJ
         {
             IsMatched = false;
             OnColourMisMatched.Invoke();
+
+            if (autoDeactivate)
+            {
+                timer = autoDeactivateTime;
+            }
         }
 
         public void ResetCellState()

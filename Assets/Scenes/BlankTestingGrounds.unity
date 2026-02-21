@@ -1076,6 +1076,14 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2429118507526249295, guid: 2ac0f559aa39aa943980a5bd63ce2b0d, type: 3}
+      propertyPath: autoDeactivate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429118507526249295, guid: 2ac0f559aa39aa943980a5bd63ce2b0d, type: 3}
+      propertyPath: autoDeactivateTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429118507526249295, guid: 2ac0f559aa39aa943980a5bd63ce2b0d, type: 3}
       propertyPath: OnColourMatched.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}

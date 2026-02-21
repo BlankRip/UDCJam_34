@@ -15,7 +15,7 @@ namespace UDCJ
         [SerializeField] protected SpriteRenderer[] visualsSpriteRenderers;
         [SerializeField] protected SpriteShapeRenderer[] visualsSpriteShapeRenderers;
 
-        protected void SetObjectColour(GameplayColour gameplayColour)
+        public virtual void SetObjectColour(GameplayColour gameplayColour)
         {
             GameStatics.SetSpriteColour(visualsSpriteRenderers, gameplayColour);
             GameStatics.SetSpriteColour(visualsSpriteShapeRenderers, gameplayColour);

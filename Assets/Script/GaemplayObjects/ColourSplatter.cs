@@ -11,6 +11,12 @@ namespace UDCJ
     {
         [SerializeField] bool isSingelPickUp = false;
 
+        public override void SetObjectColour(GameplayColour gameplayColour)
+        {
+            base.SetObjectColour(gameplayColour);
+            startingColour = gameplayColour;
+        }
+
         private void OnTriggerEnter2D(Collider2D other)
         {
             Player player = other.gameObject.GetComponent<Player>();

@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 namespace UDCJ
 {
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour, IBulletInteractable
     {
         private Rigidbody2D rigidbody;
         private InputAction moveAction;
@@ -48,6 +48,8 @@ namespace UDCJ
 
         [SerializeField] 
         private Transform directionIndicator;
+
+        private IBulletInteractable _bulletInteractableImplementation;
 
         private void Awake()
         {
@@ -109,6 +111,14 @@ namespace UDCJ
         public void SetPlayerColour(GameplayColour newColour)
         {
             CurrentColour = newColour;
+        }
+
+        public void OnInteract(ColouredBullet interactingBullet)
+        {
+            if (interactingBullet.BulletColour != CurrentColour)
+            {
+                SetPlayerColour(interactingBullet.BulletColour);
+            }
         }
     }
 }

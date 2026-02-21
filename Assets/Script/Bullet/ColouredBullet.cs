@@ -1,6 +1,4 @@
-using System;
 using MyNamespace;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace UDCJ
@@ -9,7 +7,11 @@ namespace UDCJ
     {
         [SerializeField] private float moveSpeed = 1300.0f;
         [SerializeField] private float lifetime = 16.0f;
-        [SerializeField] private SpriteRenderer spriteRenderer;
+        
+        [Space][Space][Header("Visuals")]
+        [SerializeField] private SpriteRenderer[] spriteRenderers;
+        [SerializeField] private Transform visualRotationPivot;
+        
         public GameplayColour BulletColour { get; private set; }
         private Rigidbody2D rigidbody;
 
@@ -22,11 +24,15 @@ namespace UDCJ
         private void Update()
         {
             rigidbody.linearVelocity = transform.up * moveSpeed;
+            visualRotationPivot.Rotate(Vector3.forward, Time.deltaTime * -360.0f);
         }
 
         public void SetupBullet(GameplayColour colour, Vector3 upVector)
         {
-            GameStatics.SetSpriteColour(spriteRenderer, colour);
+            foreach (SpriteRenderer spriteRenderer in spriteRenderers)
+            {
+                GameStatics.SetSpriteColour(spriteRenderer, colour);
+            }
             GameStatics.SetGameObjectToColourLayer(this.gameObject, colour);
             transform.up = upVector;
             BulletColour = colour;

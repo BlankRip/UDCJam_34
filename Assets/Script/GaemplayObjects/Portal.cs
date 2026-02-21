@@ -25,12 +25,12 @@ namespace UDCJ
         {
             if (connectedPortal == null)
             {
-                Debug.LogError("There is no connected Portal so self destroying component");
+                Debug.LogError("There is no connected Portal so self destroying component", gameObject);
                 DestroyImmediate(this);
             }
             if (bulletPrefab == null)
             {
-                Debug.LogError("There is no assigned bullet prefab so self destroying component");
+                Debug.LogError("There is no assigned bullet prefab so self destroying component", gameObject);
                 DestroyImmediate(this);
             }
         }

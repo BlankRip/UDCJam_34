@@ -10,6 +10,7 @@ namespace UDCJ
         private Rigidbody2D rigidbody;
         private InputAction moveAction;
         private InputAction shootAction;
+        private InputAction lookAction;
         private Vector2 shootDirection;
         
         private GameplayColour currentColour;
@@ -67,15 +68,22 @@ namespace UDCJ
             PlayerInput playerInput = PlayerInputProvider.GetPlayerInputComp();
             moveAction = playerInput.actions["Move"];
             shootAction = playerInput.actions["Shoot"];
+            lookAction = playerInput.actions["Look"];
         }
 
         private void Update()
         {
             Vector2 moveDirection = moveAction.ReadValue<Vector2>().normalized;
+            Vector2 lookDirection = lookAction.ReadValue<Vector2>().normalized;
+            Vector2 shootDirection = lookDirection != Vector2.zero ? lookDirection : moveDirection;
+
             rigidbody.linearVelocity = moveDirection * moveSpeed;
+            if (shootDirection != Vector2.zero)
+            {
+                directionIndicator.rotation = Quaternion.LookRotation(directionIndicator.forward, shootDirection);
+            }
             if (moveDirection != Vector2.zero)
             {
-                directionIndicator.rotation = Quaternion.LookRotation(directionIndicator.forward, moveDirection);
                 shootDirection = moveDirection;
             }
             

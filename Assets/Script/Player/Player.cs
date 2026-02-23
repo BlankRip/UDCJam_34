@@ -65,7 +65,7 @@ namespace UDCJ
         {
             CurrentColour = GameplayColour.Nutral;
             
-            PlayerInput playerInput = PlayerInputProvider.GetPlayerInputComp();
+            PlayerInput playerInput = GetComponent<PlayerInput>();
             moveAction = playerInput.actions["Move"];
             shootAction = playerInput.actions["Shoot"];
             lookAction = playerInput.actions["Look"];

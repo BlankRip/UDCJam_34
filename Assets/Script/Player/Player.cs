@@ -126,7 +126,16 @@ namespace UDCJ
             }
             else
             {
-                Debug.Log("There is no controller connected, need at least 1 controller along side keyboard to play this game");
+                if (playerIndex == 0)
+                {
+                    devices = new InputDevice[2] { Keyboard.current, Mouse.current };
+                    playerInput.SwitchCurrentControlScheme("Keyboard&Mouse", devices);
+                }
+                else
+                {
+                    playerInput.SwitchCurrentControlScheme("Gamepad", devices);
+                    Debug.Log("There is no controller connected, need at least 1 controller along side keyboard to play this game");
+                }
             }
         }
 #endregion

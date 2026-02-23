@@ -1,13 +1,14 @@
-using System;
+using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Utilities;
 
 namespace UDCJ
 {
     public class Player : MonoBehaviour, IBulletInteractable
     {
         private Rigidbody2D rigidbody;
+        private PlayerInput playerInput;
         private InputAction moveAction;
         private InputAction shootAction;
         private InputAction lookAction;
@@ -38,8 +39,11 @@ namespace UDCJ
                 }
             }
         }
-        
 
+        [SerializeField] [MinValue(0)] [MaxValue(1)]
+        private int playerIndex = 0;
+        
+        [Space][Space]
         [SerializeField]
         private float moveSpeed = 10.0f;
         [SerializeField]
@@ -65,11 +69,67 @@ namespace UDCJ
         {
             CurrentColour = GameplayColour.Nutral;
             
-            PlayerInput playerInput = GetComponent<PlayerInput>();
+            playerInput = GetComponent<PlayerInput>();
             moveAction = playerInput.actions["Move"];
             shootAction = playerInput.actions["Shoot"];
             lookAction = playerInput.actions["Look"];
+            
+            InputSystem.onDeviceChange += InputSystemOnonDeviceChange;
+            AssignInputDevicesToPlayer();
         }
+
+        private void OnDestroy()
+        {
+            InputSystem.onDeviceChange -= InputSystemOnonDeviceChange;
+        }
+        
+#region Co-Op Input Assignment Handeling
+        private void InputSystemOnonDeviceChange(InputDevice inputDevice, InputDeviceChange change)
+        {
+            if (inputDevice is Gamepad)
+            {
+                AssignInputDevicesToPlayer();
+            }
+        }
+
+        private void AssignInputDevicesToPlayer()
+        {
+            ReadOnlyArray<Gamepad> gamepads = Gamepad.all;
+            InputDevice[] devices = new InputDevice[0];
+
+            if (gamepads.Count >= 2)
+            {
+                switch (playerIndex)
+                {
+                    case 0:
+                        devices = new InputDevice[1] { gamepads[1] };
+                        break;
+                    case 1:
+                        devices = new InputDevice[1] { gamepads[0] };
+                        break;
+                }
+                playerInput.SwitchCurrentControlScheme("Gamepad", devices);
+            }
+            else if (gamepads.Count == 1)
+            {
+                switch (playerIndex)
+                {
+                    case 0:
+                        devices = new InputDevice[2] { Keyboard.current, Mouse.current };
+                        playerInput.SwitchCurrentControlScheme("Keyboard&Mouse", devices);
+                        break;
+                    case 1:
+                        devices = new InputDevice[1] { gamepads[0] };
+                        playerInput.SwitchCurrentControlScheme("Gamepad", devices);
+                        break;
+                }
+            }
+            else
+            {
+                Debug.Log("There is no controller connected, need at least 1 controller along side keyboard to play this game");
+            }
+        }
+#endregion
 
         private void Update()
         {

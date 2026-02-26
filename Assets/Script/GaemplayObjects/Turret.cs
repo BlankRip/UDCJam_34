@@ -1,4 +1,3 @@
-using System;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -15,6 +14,7 @@ namespace UDCJ
         [OnValueChanged("OnStartDeactivatedChanged")]
 #endif
         [SerializeField] private bool startDeactivated = false;
+        [SerializeField] private float startDelay = 0.0f;
 
         private GameplayColour currentColour;
         private float timer;
@@ -25,7 +25,7 @@ namespace UDCJ
             FunctionaltiyPass();
             
             currentColour = startDeactivated ? GameplayColour.Nutral : startingColour;
-            timer = gapBetweenShots;
+            timer = gapBetweenShots + startDelay;
             isActive = !startDeactivated;
         }
 

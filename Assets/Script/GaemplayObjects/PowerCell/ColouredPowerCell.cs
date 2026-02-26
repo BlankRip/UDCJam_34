@@ -100,22 +100,26 @@ namespace UDCJ
                 interactionLocked = true;
                 interactionLockedVisual?.SetActive(true);
             }
-        }
-
-        protected virtual void ColourMisMatch()
-        {
-            IsMatched = false;
-            OnColourMisMatched.Invoke();
-
             if (autoDeactivate)
             {
                 timer = autoDeactivateTime;
             }
         }
 
+        protected virtual void ColourMisMatch()
+        {
+            IsMatched = false;
+            OnColourMisMatched.Invoke();
+        }
+
         public void ResetCellState()
         {
             IsMatched = false;
+            if (singleMatch)
+            {
+                interactionLocked = false;
+                interactionLockedVisual?.SetActive(false);
+            }
             ReturnToStartingColour();
         }
 

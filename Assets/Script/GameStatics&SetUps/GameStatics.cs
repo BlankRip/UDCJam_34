@@ -20,6 +20,10 @@ namespace UDCJ
         public static Color Colour2 = Color.yellow;
         public static Color Colour3 = Color.green;
         public static Color WallColour = Color.black;
+        
+        public static string UnlockedLevelsId = "UnlockedLevels";
+        public static string LastPlayedLevelId = "LastPlayedLevel";
+        public static int Level1SceneBuildIndex = 1;
 
         public static void SetGameObjectToColourLayer(GameObject gameObject, GameplayColour gameplayColour)
         {

@@ -36,7 +36,7 @@ namespace UDCJ
                 {
                     if (isFinalLevel)
                     {
-                        // Move to main menu/ thank you for playing page
+                        SceneManager.LoadScene(GameStatics.ThanksForPlayingSceneBuildIndex);
                     }
                     else
                     {

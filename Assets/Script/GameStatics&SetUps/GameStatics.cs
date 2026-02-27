@@ -24,6 +24,7 @@ namespace UDCJ
         public static string UnlockedLevelsId = "UnlockedLevels";
         public static string LastPlayedLevelId = "LastPlayedLevel";
         public static int Level1SceneBuildIndex = 1;
+        public static int MainMenuSceneBuildIndex = 0;
 
         public static void SetGameObjectToColourLayer(GameObject gameObject, GameplayColour gameplayColour)
         {

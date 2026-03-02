@@ -5681,6 +5681,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 831475887}
     m_Modifications:
     - target: {fileID: 2429118507526249295, guid: 2ac0f559aa39aa943980a5bd63ce2b0d, type: 3}
+      propertyPath: singleMatch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2429118507526249295, guid: 2ac0f559aa39aa943980a5bd63ce2b0d, type: 3}
       propertyPath: colourToMatch
       value: 2
       objectReference: {fileID: 0}

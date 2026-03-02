@@ -22,6 +22,8 @@ namespace UDCJ
         [SerializeField] [Tooltip("If the power cell should get deactivated automatically after activation")]
         private bool autoDeactivate = false;
         [SerializeField] private float autoDeactivateTime = 2.0f;
+        [SerializeField]
+        private SpriteRenderer timerSpriteRenderer;
         
         protected bool interactionLocked = false;
         protected float timer;
@@ -45,6 +47,7 @@ namespace UDCJ
         {
             CurrentColour = startingColour;
             timer = autoDeactivateTime;
+            GameStatics.SetSpriteColour(timerSpriteRenderer, colourToMatch);
         }
 
         private void Update()
@@ -52,6 +55,7 @@ namespace UDCJ
             if (autoDeactivate && IsMatched)
             {
                 timer -= Time.deltaTime;
+                timerSpriteRenderer.size = new Vector2(1, timer/autoDeactivateTime);
                 if (timer <= 0)
                 {
                     if (singleMatch)
@@ -103,6 +107,8 @@ namespace UDCJ
             if (autoDeactivate)
             {
                 timer = autoDeactivateTime;
+                timerSpriteRenderer.size = new Vector2(1, 1);
+                timerSpriteRenderer.gameObject.SetActive(true);
             }
         }
 
@@ -110,6 +116,8 @@ namespace UDCJ
         {
             IsMatched = false;
             OnColourMisMatched.Invoke();
+            if (autoDeactivate)
+                timerSpriteRenderer.gameObject.SetActive(false);
         }
 
         public void ResetCellState()
@@ -120,6 +128,8 @@ namespace UDCJ
                 interactionLocked = false;
                 interactionLockedVisual?.SetActive(false);
             }
+            if (autoDeactivate)
+                timerSpriteRenderer.gameObject.SetActive(false);
             ReturnToStartingColour();
         }
 

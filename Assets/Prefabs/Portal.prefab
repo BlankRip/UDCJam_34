@@ -387,9 +387,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Portal
   spinnySquare: {fileID: 3000135028127652154}
   spinnySquare2: {fileID: 6622099553387406211}
-  exitDirectionPivot: {fileID: 7311675957041749191}
+  portalColourIndex: 0
+  portalColours: {fileID: 11400000, guid: f4a18d32161b06f42931be32e5ce2c29, type: 2}
   connectedPortal: {fileID: 0}
-  spitOutAngle: 0
   bulletSpawnPoint: {fileID: 4357354908064525254}
   bulletPrefab: {fileID: 170230267849788473, guid: 34a3b17478e3d1f41b8ae3cd1dc2bfd9, type: 3}
 --- !u!58 &7679344662146022858

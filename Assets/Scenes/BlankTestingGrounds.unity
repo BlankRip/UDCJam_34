@@ -127,10 +127,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 407322567024492180, guid: e6672387cf707d54aa62ab83a92ec37f, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 407322567024492180, guid: e6672387cf707d54aa62ab83a92ec37f, type: 3}
+      propertyPath: m_Color.g
+      value: 0.48694897
+      objectReference: {fileID: 0}
+    - target: {fileID: 407322567024492180, guid: e6672387cf707d54aa62ab83a92ec37f, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493433891161710364, guid: e6672387cf707d54aa62ab83a92ec37f, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493433891161710364, guid: e6672387cf707d54aa62ab83a92ec37f, type: 3}
+      propertyPath: m_Color.g
+      value: 0.48694897
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493433891161710364, guid: e6672387cf707d54aa62ab83a92ec37f, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9137255
+      objectReference: {fileID: 0}
     - target: {fileID: 2725802997276204866, guid: e6672387cf707d54aa62ab83a92ec37f, type: 3}
       propertyPath: connectedPortal
       value: 
       objectReference: {fileID: 1520727512}
+    - target: {fileID: 2725802997276204866, guid: e6672387cf707d54aa62ab83a92ec37f, type: 3}
+      propertyPath: portalColourIndex
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2941630305004709213, guid: e6672387cf707d54aa62ab83a92ec37f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.79
@@ -1178,10 +1206,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 407322567024492180, guid: e6672387cf707d54aa62ab83a92ec37f, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 407322567024492180, guid: e6672387cf707d54aa62ab83a92ec37f, type: 3}
+      propertyPath: m_Color.g
+      value: 0.48694897
+      objectReference: {fileID: 0}
+    - target: {fileID: 407322567024492180, guid: e6672387cf707d54aa62ab83a92ec37f, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493433891161710364, guid: e6672387cf707d54aa62ab83a92ec37f, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493433891161710364, guid: e6672387cf707d54aa62ab83a92ec37f, type: 3}
+      propertyPath: m_Color.g
+      value: 0.48694897
+      objectReference: {fileID: 0}
+    - target: {fileID: 2493433891161710364, guid: e6672387cf707d54aa62ab83a92ec37f, type: 3}
+      propertyPath: m_Color.r
+      value: 0.9137255
+      objectReference: {fileID: 0}
     - target: {fileID: 2725802997276204866, guid: e6672387cf707d54aa62ab83a92ec37f, type: 3}
       propertyPath: connectedPortal
       value: 
       objectReference: {fileID: 1949148779}
+    - target: {fileID: 2725802997276204866, guid: e6672387cf707d54aa62ab83a92ec37f, type: 3}
+      propertyPath: portalColourIndex
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2941630305004709213, guid: e6672387cf707d54aa62ab83a92ec37f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.01

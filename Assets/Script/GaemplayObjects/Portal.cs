@@ -9,6 +9,12 @@ namespace UDCJ
         [Header("Visuals")]
         [SerializeField] private Transform spinnySquare;
         [SerializeField] private Transform spinnySquare2;
+        [SerializeField] [Range(0, 8)]
+        #if UNITY_EDITOR
+        [OnValueChanged("SetPortalColour")]
+        #endif
+        private int portalColourIndex;
+        [SerializeField] private PortalColours portalColours;
 
         [Space] [Space]
         [Header("Portal Settings")]
@@ -18,6 +24,7 @@ namespace UDCJ
 
         private void Start()
         {
+            SetPortalColour();
             FunctionalityPass();
         }
 
@@ -51,6 +58,17 @@ namespace UDCJ
         public void OnInteract(ColouredBullet interactingBullet)
         {
             connectedPortal.SpawnBullet(interactingBullet.BulletColour);
+        }
+
+        private void SetPortalColour()
+        {
+            SpriteRenderer render = spinnySquare.GetComponent<SpriteRenderer>();
+            if(render != null)
+                render.color = portalColours.Colours[portalColourIndex];
+            render = spinnySquare2.GetComponent<SpriteRenderer>();
+            if(render != null)
+                render.color = portalColours.Colours[portalColourIndex];
+                
         }
     }
 }

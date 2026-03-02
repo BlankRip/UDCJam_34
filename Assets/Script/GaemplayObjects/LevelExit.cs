@@ -1,11 +1,12 @@
 using System;
+using MyNamespace;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace UDCJ
 {
-    public class LevelExit : MonoBehaviour
+    public class LevelExit : MonoBehaviour, IIgnoreBulletDestroy
     {
         [SerializeField]
         private bool isFinalLevel = false;

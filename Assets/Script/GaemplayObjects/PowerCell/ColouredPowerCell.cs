@@ -130,7 +130,7 @@ namespace UDCJ
             }
             if (autoDeactivate)
                 timerSpriteRenderer.gameObject.SetActive(false);
-            ReturnToStartingColour();
+            SetColour(GameplayColour.Nutral);
         }
 
         public void OnInteract(ColouredBullet interactingBullet)

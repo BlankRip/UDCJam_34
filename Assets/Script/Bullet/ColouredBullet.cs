@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace UDCJ
 {
-    public class ColouredBullet : MonoBehaviour
+    public class ColouredBullet : MonoBehaviour, IIgnoreBulletDestroy
     {
         [SerializeField] private float moveSpeed = 1300.0f;
         [SerializeField] private float lifetime = 16.0f;

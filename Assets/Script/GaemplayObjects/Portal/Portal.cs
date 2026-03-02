@@ -70,5 +70,13 @@ namespace UDCJ
                 render.color = portalColours.Colours[portalColourIndex];
                 
         }
+        
+        #if UNITY_EDITOR
+        public void SetPortalColourIndex(int colourIndex)
+        {
+            portalColourIndex = colourIndex;
+            SetPortalColour();
+        }
+        #endif
     }
 }

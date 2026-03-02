@@ -235,10 +235,11 @@ MonoBehaviour:
   visualsSpriteRenderers:
   - {fileID: 4051207533048614822}
   visualsSpriteShapeRenderers: []
-  gapBetweenShots: 2
+  gapBetweenShots: 1.5
   spawnPointTransform: {fileID: 1248978839310658768}
   bulletPrefab: {fileID: 170230267849788473, guid: 34a3b17478e3d1f41b8ae3cd1dc2bfd9, type: 3}
   startDeactivated: 0
+  startDelay: 0
 --- !u!58 &8532001651648885265
 CircleCollider2D:
   m_ObjectHideFlags: 0

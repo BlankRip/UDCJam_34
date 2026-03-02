@@ -15,8 +15,11 @@ namespace UDCJ
 #if UNITY_EDITOR
         private void OnWallSizeChanged()
         {
-            if(visualTransform)
+            if (visualTransform)
+            {
                 visualTransform.localScale = new Vector3(wallSize.x, wallSize.y, 1.0f);
+                visualTransform.localPosition = Vector3.zero;
+            }
         }
 #endif
     }

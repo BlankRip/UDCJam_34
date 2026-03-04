@@ -45,9 +45,9 @@ namespace UDCJ
 
         private void Start()
         {
-            CurrentColour = startingColour;
             timer = autoDeactivateTime;
             GameStatics.SetSpriteColour(timerSpriteRenderer, colourToMatch);
+            CurrentColour = startingColour;
         }
 
         private void Update()

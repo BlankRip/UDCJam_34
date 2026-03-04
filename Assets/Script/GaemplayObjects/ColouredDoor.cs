@@ -5,7 +5,7 @@ namespace UDCJ
 {
     public class ColouredDoor : ColourGameObjectBase
     {
-        private void Start()
+        private void Awake()
         {
             SetObjectColour(startingColour);
         }

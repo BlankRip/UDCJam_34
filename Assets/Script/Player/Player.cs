@@ -189,6 +189,8 @@ namespace UDCJ
 
         public void SetPlayerColour(GameplayColour newColour)
         {
+            if (CurrentColour == newColour)
+                return;
             CurrentColour = newColour;
             
             SFxHandler.Instance?.PlayAbsorbed(playerIndex);

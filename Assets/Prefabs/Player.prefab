@@ -294,6 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6f21617953aba488a3cc3bb5ebd9b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerIndex: 0
   moveSpeed: 5.5
   bulletPrefab: {fileID: 170230267849788473, guid: 34a3b17478e3d1f41b8ae3cd1dc2bfd9, type: 3}
   playerVisualsSpriteRenderer:

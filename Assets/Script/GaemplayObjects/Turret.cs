@@ -15,6 +15,10 @@ namespace UDCJ
 #endif
         [SerializeField] private bool startDeactivated = false;
         [SerializeField] private float startDelay = 0.0f;
+        
+        [Space][Space][Header("Audio")]
+        [SerializeField] AudioSource audioSource;
+        [SerializeField] AudioClip turretBulletClip;
 
         private GameplayColour currentColour;
         private float timer;
@@ -62,6 +66,8 @@ namespace UDCJ
             Vector3 spawnPoint = spawnPointTransform.position + (spawnPointTransform.up * 0.4f);
             ColouredBullet spawnedBullet = Instantiate(bulletPrefab,  spawnPoint, Quaternion.identity);
             spawnedBullet.SetupBullet(currentColour, spawnPointTransform.up);
+            
+            audioSource.PlayOneShot(turretBulletClip);
         }
 
         public void OnPoweredUp(GameplayColour powerColour)

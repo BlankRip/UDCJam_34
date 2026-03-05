@@ -20,6 +20,8 @@ namespace UDCJ
             {
                 currentColour = interactingBullet.BulletColour;
                 SetObjectColour(currentColour);
+                
+                SFxHandler.Instance?.PlayAbsorbed();
             }
             else
             {
@@ -27,6 +29,8 @@ namespace UDCJ
                 {
                     ColourSplatter spawnedSpatter = Instantiate(colourSplatterPrefab, transform.position, Quaternion.identity);
                     spawnedSpatter.SetObjectColour(currentColour);
+                    
+                    SFxHandler.Instance?.PlayCanisterBreak();
                     Destroy(this.gameObject);
                 }
             }

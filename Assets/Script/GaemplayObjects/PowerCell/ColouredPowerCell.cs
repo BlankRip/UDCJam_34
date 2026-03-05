@@ -110,6 +110,8 @@ namespace UDCJ
                 timerSpriteRenderer.size = new Vector2(1, 1);
                 timerSpriteRenderer.gameObject.SetActive(true);
             }
+            
+            SFxHandler.Instance?.PlayPowerCellMatched();
         }
 
         protected virtual void ColourMisMatch()
@@ -118,6 +120,8 @@ namespace UDCJ
             OnColourMisMatched.Invoke();
             if (autoDeactivate)
                 timerSpriteRenderer.gameObject.SetActive(false);
+            
+            SFxHandler.Instance?.PlayPowerCellReset();
         }
 
         public void ResetCellState()
@@ -131,6 +135,8 @@ namespace UDCJ
             if (autoDeactivate)
                 timerSpriteRenderer.gameObject.SetActive(false);
             SetColour(GameplayColour.Nutral);
+            
+            SFxHandler.Instance?.PlayPowerCellReset();
         }
 
         public void OnInteract(ColouredBullet interactingBullet)

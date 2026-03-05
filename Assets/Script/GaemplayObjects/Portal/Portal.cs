@@ -58,6 +58,8 @@ namespace UDCJ
         public void OnInteract(ColouredBullet interactingBullet)
         {
             connectedPortal.SpawnBullet(interactingBullet.BulletColour);
+            
+            SFxHandler.Instance?.PlayPortelTeleport();
         }
 
         private void SetPortalColour()

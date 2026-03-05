@@ -182,12 +182,16 @@ namespace UDCJ
             ColouredBullet spawnedBullet = Instantiate(bulletPrefab,  spawnPoint, Quaternion.identity);
             spawnedBullet.SetupBullet(CurrentColour, directionIndicator.up);
             
+            SFxHandler.Instance?.PlayBulletLaunched(playerIndex);
+            
             CurrentColour = GameplayColour.Nutral;
         }
 
         public void SetPlayerColour(GameplayColour newColour)
         {
             CurrentColour = newColour;
+            
+            SFxHandler.Instance?.PlayAbsorbed(playerIndex);
         }
 
         public void OnInteract(ColouredBullet interactingBullet)

@@ -24,6 +24,7 @@ namespace UDCJ
         [SerializeField] private float autoDeactivateTime = 2.0f;
         [SerializeField]
         private SpriteRenderer timerSpriteRenderer;
+        [SerializeField] private GameObject autoDeactivateRing;
         
         protected bool interactionLocked = false;
         protected float timer;
@@ -48,6 +49,8 @@ namespace UDCJ
             timer = autoDeactivateTime;
             GameStatics.SetSpriteColour(timerSpriteRenderer, colourToMatch);
             CurrentColour = startingColour;
+            
+            autoDeactivateRing.gameObject.SetActive(autoDeactivate);
         }
 
         private void Update()
@@ -55,7 +58,9 @@ namespace UDCJ
             if (autoDeactivate && IsMatched)
             {
                 timer -= Time.deltaTime;
-                timerSpriteRenderer.size = new Vector2(1, timer/autoDeactivateTime);
+                float timerScaleValue = Mathf.Lerp(0.0f, 0.9f, timer/autoDeactivateTime);
+                timerSpriteRenderer.transform.localScale = new Vector3(timerScaleValue, timerScaleValue, 1.0f);
+                //timerSpriteRenderer.size = new Vector2(1, timer/autoDeactivateTime);
                 if (timer <= 0)
                 {
                     if (singleMatch)
@@ -75,6 +80,11 @@ namespace UDCJ
                 return;
             
             CurrentColour = colour;
+
+            if (autoDeactivate)
+            {
+                GameStatics.SetSpriteColour(visualsSpriteRenderers[0], GameplayColour.Nutral);
+            }
         }
 
         protected void TestForColourMatch()

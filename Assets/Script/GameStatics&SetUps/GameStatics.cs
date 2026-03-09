@@ -25,7 +25,7 @@ namespace UDCJ
         public static string LastPlayedLevelId = "LastPlayedLevel";
         public static int Level1SceneBuildIndex = 1;
         public static int MainMenuSceneBuildIndex = 0;
-        public static int ThanksForPlayingSceneBuildIndex = 0;
+        public static int ThanksForPlayingSceneBuildIndex = 25;
 
         public static void SetGameObjectToColourLayer(GameObject gameObject, GameplayColour gameplayColour)
         {

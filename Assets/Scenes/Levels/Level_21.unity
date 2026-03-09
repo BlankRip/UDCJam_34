@@ -1327,7 +1327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3355027338501744650, guid: 8662e4ae6bbd7ad40a3ee13df48dc516, type: 3}
       propertyPath: wallSize.x
-      value: 5.75
+      value: 5.8
       objectReference: {fileID: 0}
     - target: {fileID: 3355027338501744650, guid: 8662e4ae6bbd7ad40a3ee13df48dc516, type: 3}
       propertyPath: wallSize.y
@@ -1375,7 +1375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7082227447694084780, guid: 8662e4ae6bbd7ad40a3ee13df48dc516, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5.75
+      value: 5.8
       objectReference: {fileID: 0}
     - target: {fileID: 7082227447694084780, guid: 8662e4ae6bbd7ad40a3ee13df48dc516, type: 3}
       propertyPath: m_LocalScale.y
